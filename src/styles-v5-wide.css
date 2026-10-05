@@ -1,0 +1,119 @@
+/* The model and its process timeline share the full workspace width. */
+.ops-shell {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+.ops-header,
+.kpi-strip,
+.ops-footer {
+  padding-inline: 16px;
+}
+.ops-workspace,
+.ops-workspace.expanded {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+}
+.ops-workspace > .scene-panel {
+  width: 100%;
+  border-inline: 0;
+  border-radius: 0;
+}
+.ops-workspace .scene-viewport {
+  height: clamp(520px, 72vh, 1020px);
+  min-height: 520px;
+}
+.ops-workspace.expanded .scene-viewport {
+  height: clamp(420px, calc(100dvh - 305px), 1200px);
+  min-height: 420px;
+}
+.ops-workspace.expanded {
+  inset: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  grid-auto-rows: max-content;
+  align-content: start;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.ops-workspace.expanded > .scene-panel {
+  border: 0;
+  box-shadow: none;
+}
+.business-panel {
+  min-width: 0;
+  margin-inline: 12px;
+  background: #f7fafd;
+  border: 1px solid #e4ebf3;
+  border-radius: 11px;
+  overflow: hidden;
+}
+.business-panel > summary {
+  cursor: pointer;
+  padding: 13px 16px;
+  color: #58738c;
+  font-size: 12px;
+}
+.business-panel > summary strong {
+  margin-right: 14px;
+  font-weight: 600;
+}
+.business-panel > summary span {
+  color: #8b9fb3;
+  font-size: 11px;
+}
+.business-panel > summary small {
+  float: right;
+  color: #8b9fb3;
+  font-size: 10px;
+}
+.business-panel > summary:focus-visible {
+  outline: 3px solid #9ec4ff;
+  outline-offset: -3px;
+}
+.business-panel[open] > summary {
+  border-bottom: 1px solid #e4ebf3;
+}
+.business-panel .context-panel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding: 14px;
+  align-items: start;
+}
+.business-panel .context-panel > * {
+  grid-column: auto;
+  grid-row: auto;
+  min-width: 0;
+}
+@media (max-width: 850px) {
+  .business-panel .context-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 680px) {
+  .ops-header,
+  .kpi-strip,
+  .ops-footer {
+    padding-inline: 10px;
+  }
+  .ops-workspace .scene-viewport,
+  .ops-workspace.expanded .scene-viewport {
+    height: clamp(340px, 54vh, 520px);
+    min-height: 340px;
+  }
+  .business-panel .context-panel {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 10px;
+    gap: 10px;
+  }
+  .business-panel > summary {
+    padding: 12px;
+  }
+  .business-panel > summary span {
+    display: none;
+  }
+}

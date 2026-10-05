@@ -1,0 +1,18 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createRequire} from 'node:module';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const dependencyRoot=process.argv[2]?path.resolve(process.argv[2]):root;
+const packageRequire=createRequire(path.join(dependencyRoot,'package.json'));
+const viteRequire=createRequire(packageRequire.resolve('vite/package.json'));
+const {build}=viteRequire('esbuild');
+const aliases=Object.fromEntries(['react','react-dom','three','@react-three/fiber','@react-three/drei'].map(name=>[name,path.join(dependencyRoot,'node_modules',name)]));
+aliases['three-stdlib']=path.join(root,'src/threeExtras.js');
+const result=await build({entryPoints:[path.join(root,'src/main.jsx')],outdir:path.join(root,'dist'),bundle:true,minify:true,write:false,platform:'browser',format:'iife',target:'es2020',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},alias:aliases,logLevel:'warning'});
+const js=result.outputFiles.find(file=>file.path.endsWith('.js')).text.replace(/<\/script/gi,'<\\/script');
+const css=result.outputFiles.find(file=>file.path.endsWith('.css'))?.text||'';
+const html=`<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>砼联运营中心 · 3D管理预览 V6</title><style>${css}</style></head><body><div id="root"></div><script>${js}</script></body></html>`;
+await fs.mkdir(path.join(root,'dist'),{recursive:true});
+await fs.writeFile(path.join(root,'dist/index.html'),html,'utf8');
+console.log(`Standalone HTML built: ${Buffer.byteLength(html)} bytes. JavaScript and CSS embedded; no external assets.`);

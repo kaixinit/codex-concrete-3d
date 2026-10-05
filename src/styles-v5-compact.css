@@ -1,0 +1,111 @@
+/* Compact the navigation, KPI strip and scene toolbar into 106px on desktop. */
+.ops-header {
+  height: 32px;
+  min-height: 32px;
+  padding-block: 0;
+}
+.ops-brand > span {
+  width: 28px;
+  height: 28px;
+  font-size: 19px;
+  border-radius: 7px;
+}
+.ops-brand > div { gap: 0; }
+.ops-brand strong { line-height: 1.15; }
+.ops-brand small { line-height: 1; }
+.ops-header nav button { padding: 3px 10px; }
+.ops-header .icon-button { width: 28px; height: 28px; }
+.scene-toolbar {
+  height: 32px;
+  min-height: 32px;
+  padding-block: 0;
+  flex-wrap: nowrap;
+}
+.scene-title { width: auto; }
+.scene-actions { width: auto; margin-left: auto; }
+.scene-actions .icon-button { width: 28px; height: 28px; margin-left: 0; }
+.surface-switch button { padding: 3px 8px; }
+.scene-actions select { padding: 4px 7px; }
+.settings-popover { top: 38px; }
+@media (min-width: 851px) {
+  .kpi-strip {
+    height: 42px;
+    padding-block: 2px;
+  }
+  .kpi-strip > div,
+  .kpi-strip > button {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 24px 12px;
+    gap: 2px 8px;
+    padding-inline: 8px;
+    align-items: center;
+    align-content: start;
+  }
+  .kpi-strip > div > span,
+  .kpi-strip > button > span { grid-column: 1; grid-row: 1; }
+  .kpi-strip strong {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 24px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .kpi-strip strong.status-value { font-size: 18px; margin: 0; }
+  .kpi-strip > div > small,
+  .kpi-strip > button > small {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    line-height: 12px;
+    white-space: nowrap;
+  }
+  .kpi-strip > .kpi-production > small { grid-column: 1; }
+  .kpi-production .metric-track {
+    grid-column: 2;
+    grid-row: 2;
+    width: 64px;
+    height: 3px;
+    margin: 0;
+    justify-self: end;
+  }
+  .ops-workspace.expanded .scene-viewport {
+    height: clamp(420px, calc(100dvh - 289px), 1200px);
+  }
+}
+@media (max-width: 850px) {
+  .ops-header {
+    height: 64px;
+    min-height: 64px;
+    gap: 2px 8px;
+    padding-block: 2px;
+  }
+  .ops-header nav { height: 28px; }
+  .ops-header nav button { padding-block: 3px; }
+  .ops-brand > span { height: 28px; }
+  .kpi-strip {
+    height: 52px;
+    padding-block: 2px;
+    row-gap: 0;
+  }
+  .kpi-strip > div {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 12px 24px 12px;
+    gap: 0;
+    align-items: center;
+  }
+  .kpi-strip > div > span,
+  .kpi-strip > div > small { line-height: 12px; }
+  .kpi-strip strong { line-height: 1; }
+  .kpi-strip strong.status-value { margin: 0; }
+  .kpi-production .metric-track {
+    position: absolute;
+    bottom: 0;
+    right: 8px;
+    width: 36px;
+    height: 2px;
+    margin: 0;
+  }
+  .settings-popover { top: 68px; }
+}

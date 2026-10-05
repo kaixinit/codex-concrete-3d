@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eff5fc">
+  <title>商混运营管理 · 真实3D原型</title>
+  <style>
+    .preview-launch {max-width:620px;margin:12vh auto;padding:32px;font-family:"Microsoft YaHei",sans-serif;color:#173d57;background:#f2f7fb;border-radius:16px;line-height:1.7}
+    .preview-launch h1 {font-size:24px;margin-top:0}
+    .preview-launch a {display:inline-block;padding:10px 20px;background:#2879e8;color:white;border-radius:8px;text-decoration:none}
+    .preview-launch small {display:block;margin-top:18px;color:#61768a}
+  </style>
+</head>
+<body>
+  <div id="root">
+    <main class="preview-launch">
+      <h1>砼联 · 3D 管理预览</h1>
+      <p id="launch-status">正在打开完整 3D 场景……</p>
+      <a href="./dist/index.html">直接打开 3D 预览</a>
+      <small>请先完整解压源码包。预览无需安装依赖；修改源码请运行 <code>npm install</code> 和 <code>npm run dev</code>。</small>
+    </main>
+  </div>
+  <noscript><p class="preview-launch">请启用浏览器的 JavaScript 后打开 3D 预览。</p></noscript>
+  <script type="module">
+    // Raw source files open the bundled preview. Vite removes this branch in production builds.
+    if (location.protocol === 'file:' && import.meta.env?.DEV !== false) {
+      location.replace(new URL('./dist/index.html', location.href));
+    } else {
+      import('/src/main.jsx').catch(error => {
+        const status = document.getElementById('launch-status');
+        if (status) status.textContent = '请点击下方按钮打开预览，或使用 npm run dev 启动开发服务器。';
+        console.error('3D development entry could not be loaded:', error);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "revision": "V6 entrance and wash correction",
+  "date": "2026-10-05",
+  "standaloneBytes": 1432653,
+  "validationSuites": {"passed": 14, "failed": 0},
+  "samplingSeconds": 0.02,
+  "truckGeometry": {"poses": 22704, "meshChecks": 35647368},
+  "loaderBodyGeometry": {"poses": 4102, "meshChecks": 6083266},
+  "workflow": {"samples": 14325, "boundaries": 78, "forwardChecks": 2872, "tailDepartureChecks": 4, "bucketAlignmentChecks": 178},
+  "bridge": {"center": [-25, 0, 23.5], "width": 3.6, "length": 14, "surfaceY": 0.1, "wholeVehicleFits": 6, "weighingStops": 8},
+  "automaticBinX": [-18.8, -14.7, -5.8],
+  "glb": {"bytes": 3583576, "nodes": 2771, "meshes": 1874, "instances": 2014, "geometries": 141, "materials": 74, "entityIds": 21, "decodedTextures": 4, "bumpMaterials": 13, "importedEntranceLayoutMatches": true},
+  "proofImages": ["../images/v6-entrance.png", "../images/v6-wash.png"],
+  "scope": "Dense sampled source-geometry validation of an illustrative prototype; expected working bucket contact checked separately; no real vehicle dynamics, civil design or live sensors. Earlier frame-rate measurements were not repeated for this correction."
+}

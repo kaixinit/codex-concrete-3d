@@ -1,0 +1,19 @@
+{
+  "canvas": {
+    "height": 520,
+    "width": 1265
+  },
+  "performance": "20 FPS · 帧间隔 P95 54.1 ms\n300 帧采样 · 平均绘制 584 次\n几何缓存 153 · 纹理 5 · 超过100ms 0 帧\n播放采样：包含镜头和动画",
+  "quality": "当前：均衡 · 像素比 1.00 · 阴影 1024",
+  "scene": {
+    "height": 520,
+    "width": 1265
+  },
+  "stage": "12\n装载与生产供料\nRC020 · 本车入库 28.4 t",
+  "time": "114.6",
+  "viewport": {
+    "clientWidth": 1265,
+    "height": 720,
+    "width": 1280
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "concrete-operations-3d",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5178",
+    "build": "node scripts/build-standalone.mjs",
+    "test": "node scripts/verify-all.mjs",
+    "test:glb": "node scripts/verify-glb.mjs --asset models/ready-mix-plant-v6.glb",
+    "build:vite": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5179"
+  },
+  "dependencies": {
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "three": "0.180.0",
+    "@react-three/fiber": "9.3.0",
+    "@react-three/drei": "10.7.6"
+  },
+  "devDependencies": {
+    "vite": "7.1.7",
+    "@vitejs/plugin-react": "5.0.3",
+    "vite-plugin-singlefile": "2.3.0"
+  }
+}

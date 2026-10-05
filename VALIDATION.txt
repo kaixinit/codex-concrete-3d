@@ -1,0 +1,172 @@
+V5 validation — 2026-10-05
+
+Standalone build: PASS. Latest label-layer visibility revision: 1,383,295 bytes. JavaScript/CSS/models embedded; no external model or texture requests.
+The prior compact-header build measured 1,377,479 bytes; earlier business, motion and layout results below remain recorded.
+Local preview served on 127.0.0.1:5184 and checked in the Codex in-app browser.
+
+Operations: PASS, 715 workflow samples.
+380 pre-receipt checks; 106 pre-signature checks; 2,860 finite/nonnegative/capacity-bounded stock rows.
+Acknowledgement preserves fault; clearing is separate. B01 gates aggregate supply and concrete production, not independent powder screw transfer.
+Snapshot isolation, repeated-call idempotence, current vehicle/task/position metadata passed.
+
+Continuous motion: PASS, 14,325 dense samples and 78 phase/action boundaries.
+6,822 path-tangent checks; 6,822 signed wheel-travel checks; 178 bucket-lip-to-hopper checks; 300 connected powder-flow checks.
+No sampled position/heading/bone discontinuity at boundaries. Dump bed empties before lowering.
+Loader pickup/fill/transfer, bin added/discharged quantities and inventory balance passed.
+Powder flow requires a fully connected hose. Seek/replay deterministic; trace endpoint matches current vehicle.
+Labels: 1,250 placements tested for viewport bounds and non-overlap.
+
+Integration: PASS, 16 checks, 0 failures; 65 full-stage SSR renders.
+All stages expose three accessible location entrances and a current process node.
+Live map time overrides an older UI snapshot. Entering/back preserves scenario, time and play state.
+Paused seek updates the live clock; node focus retains it.
+Pre-existing B01 stops exactly at the production boundary. Seek/restart recover; acknowledging does not release the interlock.
+
+Static asset batching: PASS. Visible meshes, before/after:
+Silo 153/34; cutaway Silo 155/36; Hopper 90/48; aggregate shed 86/15.
+Bounds unchanged; dynamic fill, pipes, gates and cutaway shell remain independent.
+
+Browser checks on the final interface:
+Three actual-model preview images render. Each location enters its own content; at 53.5 seconds all three entry/back operations retained the same task time.
+Manufacturer-to-station and station-to-site/return routes visible; moving vehicle marker has no circular halo.
+Sand loader pickup and tipping into the correct automatic bin are visible; at 110 seconds inventory 263.0 t, current feed 3.4 t, received 28.4 t.
+Cement unloading connects to C01 beside the production line; dedicated angle shows hose/riser and internal fill. Before reweigh book stock remains 145.0 t.
+Detailed mixer-truck near view, human operators in the cutaway control room and full station views checked.
+Before trial, confirmation and production disabled; trial enabled confirmation, approval enabled production, starting advanced into production and loading.
+390 x 844 responsive check: page width 375 <= viewport390, scene355, three location entrances; temporary override reset afterward.
+No browser runtime error found in the checked interactions. GLTFExporter logged normal-attribute normalization warnings during export and generated corrected normals; re-import validation passed.
+
+Performance measured before the wide-layout update in the Codex in-app browser at the normal 1079 x 774 viewport, 1x playback, loader camera:
+Initial closeup 531 draw calls. Static batching brought the same closeup to366; removing repeated contact-shadow offscreen passes brought the later sampled view to363.
+Final rolling 300-frame playback sample during the loader cycle: about32 FPS; frame-interval P95 38.2 ms; draw calls262, geometry cache148, textures2. An earlier closeup window recorded32 FPS/P95 39.5 ms/draw calls363. Calls vary with camera position and view-frustum culling.
+Before removal of repeated contact-shadow passes, P95 was52.3 ms. Samples use actual rendered-frame intervals, including camera/animation; not GPU timer queries.
+These figures are machine/browser/view dependent and do not establish60 FPS or parity with any external demonstration. The route surface stops hidden WebGL rendering.
+The wider canvas has not been separately performance benchmarked; the above results describe the earlier compact layout.
+
+Wide-layout update, first revision — 2026-10-05: PASS (measurements for the prior layout).
+At the native 1094 x 784 browser viewport, the normal scene changed from746 x314 to1043 x470.4 pixels; it spans the available workspace width. The former right sidebar now sits below the scene/timeline/flow card and is collapsible.
+Full-screen control-room and mixer cutaway checked: model viewport1035 x434, complete scene card739px high. Business card begins at772px, after the scene card ends at760px; no overlap. Grid rows use max-content; remaining business content scrolls below the scene.
+Native details collapse removes the operation controls from the accessible view; expansion restores them. No business-state changes were introduced by layout controls.
+At390 x844, document width375 and scene width355: no page-level horizontal overflow; operation cards use one column. Canvas bounds match the455.75px scene height after responsive resizing. The temporary viewport override was reset.
+Standalone build and integration rerun after the layout change:16 checks passed,0 failures;65 complete stage renders.
+Saved browser captures: ../concrete-v5-wide-control.png and ../concrete-v5-wide-mixer.png.
+
+Edge-to-edge layout, second revision — 2026-10-05: PASS (measurements for the prior layout).
+Removed all horizontal scene-shell margins and the expanded-mode 12px inset plus9px padding. Shell max-width is now none. The model, task timeline and process graph use100% of the available content width, excluding the vertical scrollbar. Header and business cards retain their own reading padding.
+Native1094 x784 normal viewport: scene1079 x564.5, left0, right1079; document clientWidth and scrollWidth both1079.
+Native full-screen viewport: scene1079 x479, left0, top48. No horizontal overflow or scene/business overlap found in the checked cement task.
+1666 x816 full-screen responsive check: scene1651 x511, left0 and right1651; main.clientWidth1651, both side gaps0; no document or main horizontal overflow. Business card begins after the scene/flow card.
+2560 x1080 normal responsive check: scene2545 x777.6, left0 and right2545; document clientWidth and scrollWidth both2545. The old1920px cap no longer applies.
+390 x844 normal responsive check: scene375 x455.75, left0; document clientWidth and scrollWidth both375; business controls use one column. Temporary viewport overrides were reset.
+Final standalone build succeeded. This revision changes layout CSS only; business/model source remains unchanged from the16-check integration run above.
+Second-revision browser capture: ../concrete-v5-edge-materials.png (native viewport). The older wide-control/mixer captures show the first revision.
+
+Compact top area, third revision — 2026-10-05: PASS.
+Desktop header32px, KPI strip42px, scene toolbar32px; with the scene border, the model begins107px below the page top, down from about212px. No whole-page scaling is applied. KPI labels and values occupy the first row; plan/detail text stays on the second row. All five metrics and the four navigation entries remain available on desktop.
+Native1280 x720 viewport: document clientWidth and scrollWidth1265; scene1265 x520 atleft0, top107. Header, KPI strip and toolbar measured32/42/32px.
+851 x720 desktop-boundary check: model begins at107px; KPI labels fit before their values and all detail lines fit. The vehicle detail uses a concise label plus the original full description in its title.
+390 x844 mobile check: header64px, KPI52px, toolbar32px; model begins149px below the top. Document clientWidth and scrollWidth both375; all navigation entries retained in two header rows. Temporary viewport override reset afterward.
+Native full-screen compatibility check: toolbar32px; model1265 x431, top32; business information begins after the complete scene/flow card, with no overlap.
+Build and integration rerun:16 checks passed,0 failures;65 complete-stage renders. Business calculations and model geometry are unchanged.
+Current browser capture: ../concrete-v5-compact-header.png. Browser verification used the independent local HTTP preview; the user's file-protocol tab was not controlled.
+
+Moving-label and route-vehicle update, fourth revision — 2026-10-05: PASS.
+MC012 and other scene labels now use one per-rendered-frame positioning path. DOM left/top remain0px; projected anchors update immediately, while necessary avoidance-offset changes ease continuously. Label positions align to device pixels.
+Collision layout retains each label's previous anchor-relative offset while it remains inside the viewport and avoids reserved UI and higher-priority labels. A newly invalid position triggers relayout; a preferred position becoming available alone does not trigger a side change. View/viewport changes start a fresh layout.
+Pure label stability:10 checks passed;1,500 stable movement samples;3,398 valid placements. Covered subpixel movement, reserved UI appearance/removal, viewport edges/resizing, changed text dimensions, fault/selection priority, ID-based history, invalid history and a crowded continuous route.
+Pure label motion:5 checks passed. Moving anchors remain attached; required offset changes converge continuously; viewport clamping and device-pixel alignment remain valid.
+Route vehicles:65 full-stage SSR renders passed across sand, stone, cement, flyash and concrete tasks. Three distinct shapes identify the mixer truck, powder tanker and dump truck;4 direction checks passed. Vehicle labels are separate from the rotating body.
+Integration rerun:16 checks passed,0 failures. Existing task preservation, weighing/signature gates and B01 interlock checks remain valid.
+Browser positioning check during active playback:56 valid label samples. left/top remained0px throughout; no transform loss or10Hz base-position reset was observed; measured projection-tracking error was0px. These samples validate label positioning during playback. Static captures record appearance; this check does not add a performance benchmark.
+Latest independent HTML build:1,383,231 bytes.
+Commands from the project directory:
+node scripts/verify-label-stability.mjs
+node scripts/verify-label-motion.mjs
+node scripts/verify-map-vehicles.mjs
+The first two checks need no UI or rendering dependencies. map-vehicles supports --runtime DIR for an external dependency installation.
+
+Route/3D label isolation follow-up — 2026-10-05: PASS.
+The 3D label layer receives the scene-visible state. Switching to the route map sets the whole layer to display:none, so a label with explicit visibility:visible cannot remain over the map while WebGL rendering is stopped. Returning to3D immediately invalidates the scene to restore current labels.
+Independent HTML rebuilt:1,383,295 bytes; the preceding label/map build remains recorded above at1,383,231 bytes.
+Integration rerun after this fix:16 checks passed,0 failures.
+
+GLB: PASS, 2,822,880 bytes, GLB2.0, 2,989 nodes, 2,187 meshes, 1,635 instances, 144 geometries, 75 materials.
+EXT_mesh_gpu_instancing and KHR_materials_emissive_strength.
+All17 required entity IDs: supplier, control room, storage bays, automatic bins, four silos, mixer, belt, scale, loader, MC012, construction site and pump.
+No UI-only or selection helpers exported. Position arrays finite. Three.js GLTFLoader re-import succeeds; whole-scene bounds finite.
+Bounds min[-119,-1.8426,-23], max[138.075,28.019019951327476,164.5].
+Zero-volume route/particle instances are removed from the export clone to avoid GLTFExporter TRS NaNs. Regression: two valid colored instances survived re-import, zero instances removed, source buffers unchanged, shared-resource disposal0.
+The in-app browser exposed a generated data-URI GLB link; its local generated bytes were saved and verified.
+
+Limitations: simulated workflows and marked baseline snapshots; no PLC/GPS/scale/level sensor connection. Routes and timing are illustrative. Trial is a preview, not a quality certificate. Local replenishment exists in page memory. GLB is a static geometry/material snapshot; interactive business logic is in the web source.
+
+
+V6 final revision — 2026-10-05: PASS for functional/geometry/export checks; performance limits recorded below.
+Standalone HTML: 1,427,671 bytes. No external runtime assets. Source package version 0.6.0.
+Unified validation: 12 suites passed, 0 failed. Includes 16 integration checks, 10 new on-site interaction checks and 65 complete-stage renders.
+Mechanical continuity: 5,950 chute samples, seek/pause/1x/2x/4x consistency, hydraulic endpoints, loader penetration/local pile deformation and restoration, metering/gate states, four selectable internal mechanisms.
+Original workflows: 14,325 samples, 78 boundaries, 6,970 tangent and wheel-travel checks, 178 bucket/receiver alignment checks, 300 powder hose connections. Operations: 715 samples; receipts/signatures and nonnegative stock remain valid.
+Additional scene checks: 8 quality/camera/occlusion/selection checks and 5 bounded paused-occlusion scheduling checks; retained 10 label-stability checks and 5 label-motion checks. New embedded PNG / official GLTFLoader validation: 13 checks.
+Model optimization: current MixerTower 488 original visible meshes to89 after batching; cutaway477 to78. This revision adds309 saved visible meshes. MixerTruck282 to196, adding44 saved meshes. Bounds unchanged; selectable entity IDs, gates and mechanical joints remain dynamic. Detail distance checks use10Hz with hysteresis.
+
+Browser interaction observations, independent local HTTP preview:
+- Clicking mixer cab opens the MC012 on-site card with current simulated task/load/site and no invented sensor data. Card collapse and close retain clock43s.
+- Manual orbit changes the model angle. Restore workflow tracking returns to the release-area preset; task remains43s.
+- Clicking aggregate/powder metering links selects the corresponding mechanism, enters cutaway and shows its simulated source without changing26.1s task time.
+- Closing cutaway while paused hides labels newly obstructed by the enclosure; bounded rechecks finish without continuous demand rendering.
+- Route map shows three actual location outlines and a mixer-truck silhouette. Entering the construction site retains58s task progress and paused state.
+- Mixer chute/pump docking and reduced load shown at78s; powder truck/hose/target silo shown at53s.
+- Control-room UI trial preview -> recipe confirmation -> automatic production reaches the production stage with simulated approval and active playback.
+- Browser console errors: none during the final check.
+
+Final performance, Codex in-app browser, native1280x720 viewport, 1265x520 scene, sand supply from98s, 1x playback, fixed feed view. Rendered-frame intervals include animation; no GPU timing queries. Three hundred-frame windows:
+V5 baseline:22FPS, P9548.1ms, drawing-buffer1265x520/DPR1, current calls785 (instantaneous, not a window average).
+V6 balanced:20FPS, P9554.1ms, drawing-buffer1265x520/DPR1, average calls584, textures5, no >100ms intervals in the saved window.
+V6 automatic, settled to low:29FPS, P9537.4ms, drawing-buffer1075x442/DPR0.85, shadows disabled, average calls575, textures4, no >100ms intervals in the saved window.
+The low-mode result uses fewer pixels and details; it is not an equal-resolution FPS improvement. At equal resolution this machine remains about20FPS. Results do not establish60FPS or superiority over an external video. Performance JSON records are in docs/validation; older performance entries above describe their own earlier layouts.
+Performance UI now reports window-average calls and >100ms frames, includes visible long stalls and clears stale samples when quality/sampling changes. Map mode stops hidden WebGL rendering; paused normal mode uses demand with finite settling.
+
+Responsive check:390x844 viewport, clientWidth/scrollWidth both375, scene375x455.75 atleft0/top149. A revised portrait camera keeps the entire mixer visible. Object card268x240.5 atx97/y312.25 remains inside the scene and does not change time0. Temporary viewport override reset.
+Proof images: docs/images/v6-production.png and docs/images/v6-mixer.png; supplemental ../concrete-v6-mobile.png.
+
+Final GLB:3,562,092 bytes, GLB2.0. Official Three.js GLTFLoader with real Node PNG decoding passed. 2,703 nodes;1,851 meshes;1,828 instances;141 geometries;74 materials.
+All21 required IDs, including aggregate/powder/water metering and mixer discharge. Bounds min[-119,-1.8426,-23], max[138.075,28.019019951327476,164.5]. UI helpers excluded; position arrays finite.
+Four embedded64x64RGBA textures were decoded and checked, 13 EXT_materials_bump material maps/scales preserved. Also uses EXT_mesh_gpu_instancing, KHR_materials_clearcoat and KHR_materials_emissive_strength.
+GLB is a geometry/material/pose snapshot; interactive workflow logic remains in the source HTML application. Live PLC/GPS/scale/sensor connections remain future integration work.
+
+V6 entrance and wash correction — 2026-10-05: PASS.
+Current standalone HTML: 1,432,653 bytes. Unified validation: 14 suites passed, 0 failed.
+The entrance bridge is now centred at [-25,0,23.5], aligned along Z, with a 14x3.6m flush deck at Y=.10. The queue, barrier, canopy, guardhouse and entrance hardstand were moved together. Vehicles enter gross weighing forward, fully clear the deck before turning, return for tare weighing forward, and leave forward. A western bypass avoids the aggregate storage building.
+Automatic bin centres are [-18.8,-14.7,-5.8], Z=.1. Stone unloading passes through a full vehicle lane between the bins. The sealed collector runs below grade, with a flush load-bearing cover over the crossing and a continuous rising outlet to B01. Sand uses an S approach to the forecourt and one continuous reversing manoeuvre into its bay, replacing the repeated circulation. Loader parking is outside the truck route at [-34,.07,18.5], with a flush hardstand; feeding stops at Z4.0 to retain chassis clearance while the bucket lip reaches the hopper opening. All truck/loader roots and supplier loading ports use the same running-surface height.
+
+Actual source geometry validation:
+- 22,704 complete raw-truck workflow poses at .02s spacing; 35,647,368 mesh checks. Full cab, rear-view mirrors and rear overhang are retained, including the tipped dump-body profile. Raised equipment, actual entrance barrier/canopy/guardhouse, perimeter fences, trees and the parked loader are included.
+- 4,102 moving-loader body poses and 6,083,266 additional mesh checks; chassis, tyres and cab checked separately from intentional bucket contact with material/receiving hopper.
+- 6 whole-vehicle bridge fits (dump/powder/mixer in both directions), 8 gross/tare stops, tyre carcass/deck contact and chassis/display clearance. Bin positions, driveable cover and the actual collector-to-B01 geometry connection checked.
+- 14,325 workflow samples, 78 boundaries, 6,964 tangent and signed wheel-travel checks, 2,872 forward entry/return/exit samples, 4 full-tail bridge departure checks; 178 bucket/hopper alignment and 300 powder connection checks. Receipt/signature gates, mass balance and deterministic seeking passed.
+- 13 interaction checks, including return-map -> wash-3D at 109s, stopped washing from112.5s, retained wash view at116s/119s, explicit restoration after manual browsing and final process-node focus without isolating wash equipment.
+These are dense sampled geometry checks of the illustrative model, not a real vehicle dynamics or civil-engineering certification. Expected working bucket/material contact is checked independently.
+
+Browser observations, native desktop viewport, final local HTTP build:
+- Gross weighing at26.8s shows a full dump truck on the entrance deck, clear of the guardhouse and display.
+- Sand continuous reversing approach was played from40.5s into unloading at48.3s; the dedicated loader parking leaves the forecourt empty.
+- Stone unloading at52.3s shows the open lane between the relocated bins; tare at73.8s faces the exit and displays a30.2t simulated receipt.
+- Cement unloading at53s shows the tanker parallel to the silos with its connected hose, reached via the western bypass.
+- Return playback switched automatically from the map to the washing facility and retained the truck under the gantry; manual restoration and completed-stage process focus retain the facility. Final wash proof saved at113.2s.
+- Console error check: no errors.
+Proof images: docs/images/v6-entrance.png and docs/images/v6-wash.png. Earlier performance windows above belong to the preceding layout and were not remeasured in this correction.
+
+Current exported GLB:3,583,576 bytes;2,771 nodes;1,874 meshes;2,014 instances;141 geometries;74 materials;all21 entity IDs. Official Three.js GLTFLoader re-import and real PNG decoding passed. Four64x64RGBA textures and13 bump materials retained. Re-import also verifies the actual new bridge centre/deck dimensions/contact height, all three bin positions and flush collection crossing cover, preventing an obsolete model from being packaged.
+Bounds min[-119,-1.8426,-29], max[138.075,28.019019951327476,164.5]. Full-region static geometry/material/pose snapshot; workflow interaction remains in the HTML source.
+
+V6 extracted-source entry correction — 2026-10-05.
+The source-root index.html was a Vite JSX development entry and could show a blank page when opened directly after extraction. It now opens the shipped ./dist/index.html for raw file URLs, keeps Vite development loading for HTTP, and provides a visible preview link if source loading fails. The production Vite guard disables the source-file redirect so built HTML cannot redirect to dist/dist/index.html.
+SceneRuntime.jsx and PlantScene.jsx now explicitly import SceneQuality.jsx, avoiding Windows extension/case resolution to sceneQuality.js during Vite development/build.
+Focused validation:
+- The standalone esbuild build succeeds; the embedded app remains 1,432,653 bytes.
+- Actual inline launcher executed as a Node SourceTextModule for 3 encoded file paths, including Chinese, spaces, # and +: each selects the correct adjacent dist/index.html and never imports JSX. This is a code check, not a browser file-load check.
+- Actual Vite development page at localhost loads the complete application and 3D scene; browser error log is empty.
+- A source-root page on an ordinary static HTTP server displays its explicit preview link when development imports are unavailable. Clicking the link loads the bundled application and rendered 3D plant.
+The browser automation URL policy rejected file:// navigation, allowing only HTTP/HTTPS. Direct OS double-click behaviour was therefore not verified in the browser automation. No browser policy bypass was attempted.
+The 14 business/model regression suites reported in the preceding revision were not rerun for this entry/import correction; the scene and workflow implementation are unchanged.
+- Actual alternative Vite production build passes: 109 modules transformed, one standalone index.html (1,425,124 bytes), with the real application, inline JS and CSS; no location.replace, no /src/main.jsx or external scripts/styles. Generated in an isolated scratch directory without overwriting the released standalone build.

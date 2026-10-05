@@ -170,3 +170,14 @@ Focused validation:
 The browser automation URL policy rejected file:// navigation, allowing only HTTP/HTTPS. Direct OS double-click behaviour was therefore not verified in the browser automation. No browser policy bypass was attempted.
 The 14 business/model regression suites reported in the preceding revision were not rerun for this entry/import correction; the scene and workflow implementation are unchanged.
 - Actual alternative Vite production build passes: 109 modules transformed, one standalone index.html (1,425,124 bytes), with the real application, inline JS and CSS; no location.replace, no /src/main.jsx or external scripts/styles. Generated in an isolated scratch directory without overwriting the released standalone build.
+
+V6 workflow animation export — 2026-10-05.
+- Added the optional ?showreel entry and optional Canvas render controller, reusing the real PlantScene and getWorkflowState. Default product uses the original frame loop and DPR settings.
+- 13 shots / 52 seconds / 1,560 frames; actual WebGL frames rendered in browser and encoded to VP8 IVF. All master timestamps 0..1559 are consecutive; 13 VP8 keyframes begin at the 4-second chapter boundaries; no file truncation.
+- Business-time sampling compresses/selects workflow intervals and does not replace the interactive application's user confirmation gates. All data remain simulated. 30 fps is output video timing, not an assertion of realtime renderer FPS.
+- MP4: full52.00s,1280x720,H.264 High / yuv420p,30fps,9,851,833bytes,faststart,silent. Full actual MP4 decode succeeds. Browser video reports duration52,1280x720,advancing currentTime,paused=false,error=null.
+- GIF: full reel at2x,26.01s,720x406,208frames,8fps,80colors,dither none,loop0,9,650,224bytes. Original time range remains complete.
+- Actual media readback: all1,560 MP4 frames decode without errors; all208 final GIF frames decode in Pillow and FFmpeg without errors. Contact sheet at2/6/...50s shows all13 real chapters; pairs at1s/3s within each chapter differ. This is a motion/decoding check, not a realtime FPS measurement.
+- Focused checks: new verify-showreel.mjs verifies transfer actions, both powder types, production/loading/delivery/pumping/signature/return/wash coverage and IVF timestamp/header contract. Existing 13 interaction regressions pass. Standalone build passes (1,444,778bytes); default browser application and rendered plant load with no console errors.
+- Existing model geometry, business gates and vehicle routes were not changed. Earlier14 business/model suite results above were not rerun in full for this optional exporter change; the new focused checks do not assert a new live performance result.
+See docs/ANIMATION.md and docs/media for the actual deliverable and repeatable conversion commands.

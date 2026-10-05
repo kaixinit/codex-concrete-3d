@@ -243,15 +243,16 @@ function PlantWorld(props){
   </>;
 }
 
-export default function PlantScene({selectedId='mixer-m01',onSelect,paused=false,view='overview',showRoutes=true,faultActive=false,cutaway=false,workflow,onReady,onSceneReady,onControlAction,focusId,focusRequest=0,onFocus,onManualControl,followRequest=0,quality='auto',onQualityChange,labelReservedRects=[],visible=true,visualClock,sampling=false,onPerformance,onThumbnails}){
+export default function PlantScene({selectedId='mixer-m01',onSelect,paused=false,view='overview',showRoutes=true,faultActive=false,cutaway=false,workflow,onReady,onSceneReady,onControlAction,focusId,focusRequest=0,onFocus,onManualControl,followRequest=0,quality='auto',onQualityChange,labelReservedRects=[],visible=true,visualClock,sampling=false,onPerformance,onThumbnails,renderController=null,captureDpr}){
   const requested=normalizeQuality(quality),[effectiveQuality,setEffectiveQuality]=useState(requested==='auto'?'balanced':requested);
   useEffect(()=>{setEffectiveQuality(requested==='auto'?'balanced':requested);},[requested]);
   const profile=qualityProfile(effectiveQuality);
-  return <Canvas frameloop={!visible?'never':paused&&!sampling?'demand':'always'} shadows={profile.shadows} dpr={[.65,profile.dprMax]} camera={INITIAL_CAMERA}
+  return <Canvas frameloop={!visible?'never':paused&&!sampling?'demand':'always'} shadows={profile.shadows} dpr={captureDpr??[.65,profile.dprMax]} camera={INITIAL_CAMERA}
     gl={{antialias:true,alpha:false,powerPreference:'high-performance',toneMapping:THREE.ACESFilmicToneMapping,toneMappingExposure:1.02}}
     style={{width:'100%',height:'100%',touchAction:'none'}}>
     <SceneQualityProvider value={profile}><SceneLabelProvider view={view} visible={visible} cutaway={cutaway} reservedRects={labelReservedRects}>
       <PlantWorld {...{selectedId,onSelect,paused,view,showRoutes,faultActive,cutaway,workflow,onReady,onSceneReady,onControlAction,focusId,focusRequest,onFocus,onManualControl,followRequest,visualClock,visible,sampling,onPerformance,onThumbnails,onQualityChange}} quality={requested} onEffectiveQuality={setEffectiveQuality}/>
+      {renderController}
     </SceneLabelProvider></SceneQualityProvider>
   </Canvas>;
 }

@@ -6,10 +6,23 @@
 
 An interactive 3D prototype for ready-mix concrete production and logistics, built with React, Three.js and React Three Fiber. Equipment and vehicles use procedural geometry; operational data comes from deterministic local simulations.
 
+![商混全流程 3D 动画 · 厂家运输、入库供料、生产配送与返站洗车](docs/media/concrete-showreel-preview.gif)
+
+**[观看 / 下载 52 秒完整 MP4](docs/media/concrete-showreel.mp4)** · [动画制作与分镜说明 / How this animation was made](docs/ANIMATION.md)
+
+13 个镜头展示原料站外运输、砂石卸料、装载机取料与上料、水泥及粉煤灰气力入罐、中控试配、自动生产、装车、工地配送与泵送、空车返站和洗车。GIF 以 2 倍速度循环播放完整短片；MP4 保留原速及字幕。动画直接导出本项目的 3D 场景与业务状态机，数据为模拟，视频输出帧率不代表应用实时性能。
+
+The 13-shot reel covers receiving, loader feeding, cement and fly-ash unloading, control-room preparation, production, loading, delivery, pumping, return and washing. The looping GIF plays the full reel at 2× speed; the MP4 retains its original speed and captions. Frames come from this project's actual 3D scene and deterministic workflow, with simulated data; video frame rate is not a live performance benchmark.
+
+<details>
+<summary>展开现场截图 / Still previews</summary>
+
 ![主楼生产与现场对象卡 · Production and on-site object card](docs/images/v6-production.png)
 ![搅拌车近景 · Mixer truck close-up](docs/images/v6-mixer.png)
 ![入口过磅 · Entrance weighing](docs/images/v6-entrance.png)
 ![返站洗车自动跟随 · Automatic washing view](docs/images/v6-wash.png)
+
+</details>
 
 ## 可以体验 / What you can explore
 
